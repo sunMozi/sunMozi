@@ -25,7 +25,6 @@ Welcome to my GitHub profile! I’m **Mozi**, an enterprise-level **Java backend
 
 - 🕓 每日保持 ≥ 4 小时编码强度，精进技术栈
 - 🧠 深入掌握 Linux 运维、数据库优化与中间件应用
-- 📘 输出高质量的企业级文档与代码模板体系
 
 ---
 

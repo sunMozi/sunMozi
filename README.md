@@ -54,30 +54,6 @@ Welcome to my GitHub profile! I’m **Mozi**, a **Java backend engineer** passio
 
 ---
 
-### 📊 GitHub Stats & Contributions
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=sunMozi&show_icons=true&hide_border=true&theme=radical" alt="GitHub Stats" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sunMozi&theme=radical&hide_border=true" alt="GitHub Streak" />
-  <img src="https://github-readme-activity-graph.cyclic.app/graph?username=sunMozi&theme=radical" alt="GitHub Activity Graph" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sunMozi&theme=radical" alt="Profile Details" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=sunMozi&theme=radical" alt="Top Languages" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=sunMozi&theme=radical" alt="Most Used Languages" />
-</p>
-
----
-
-### 🌟 Visitors Count
-
-<p align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=sunMozi.sunMozi" alt="Visitors Count" />
-</p>
-
----
-
 > 🧭 Striving for **clean architecture**, **modular system design**, and **developer productivity**  
 > 🤝 Let’s connect or collaborate on open-source **Java / Vue** enterprise projects!
 

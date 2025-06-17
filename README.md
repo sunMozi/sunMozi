@@ -1,41 +1,51 @@
-### Hi there 👋 
-### This is Fernando Roldán!
+### Hi there 👋  
+### This is Mozi!
 
-[![Github](https://img.shields.io/badge/-Github-000?style=flat&logo=Github&logoColor=white)](https://github.com/FernandoRoldan93)
-[![Linkedin](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/froldanzafra/)
-[![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:Fernando.Roldan.Zafra@gmail.com)
+[![Github](https://img.shields.io/badge/-Github-000?style=flat&logo=Github&logoColor=white)](https://github.com/sunMozi)
+[![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:sunmozi@outlook.com)
 
-Welcome to my Github page! I am Fernando and I am currently finishing my Computer Engineering Master degree at the university of Granada!  
+Welcome to my GitHub profile! I’m **Mozi**, a passionate and detail-oriented **Java backend developer** with a strong focus on **enterprise-level architecture**, **clean code**, and **modern backend engineering** practices.  
 
-<img align="right" alt="img" src="https://github.com/FernandoRoldan93/FernandoRoldan93/blob/master/cover_image.jpg" width="50%" height="auto" />
+<img align="right" alt="img" src="https://github.com/sunMozi/sunMozi/blob/main/assets/cover.jpg" width="50%" height="auto" />
 
+---
 
-#### 🌱 Things I am currently working on: 
-- Finish my Computer Engineering Master Degree  
-- Taking online courses about Data Science and Machine Learning 
-- Business practices on [bi4 Group Spain](https://github.com/bi4group) 🚀 *coming soon*
+#### 🌱 Current Focus:
+- 🔧 Building robust backend systems with **Spring Boot**, **MyBatis**, **Spring Security**
+- 🧩 Structuring modular YAML configs for better maintainability
+- ⚙️ Integrating Alipay / WeChat Pay with enterprise-level configuration best practices
+- 📦 Developing component-based frontends using **Vue 3 + JSX + TailwindCSS**
+- 📚 Continuous learning on **system design**, **DevOps**, and **distributed systems**
 
-#### :muscle: Things I am challenging myself with:
-- Waking up earlier to make good use of the day
-- Coding at least 4 hours a day
-- Exercising 3 days a week
-- Improving my CV with some education apart from university
+---
 
-#### :computer: Programming languages and tools: 
+#### 💡 Self-Challenges:
+- ⏱ 每天至少编码 4 小时，保持代码敏锐度  
+- 🧠 系统学习 Linux、数据库性能优化、分布式架构  
+- 📄 编写高质量企业规范文档（Java 类模板、代码生成器、自定义注解等）  
+
+---
+
+#### :computer: My Tech Stack:
 <p>
-	<img width="50%" align="right" src="https://github-readme-stats.vercel.app/api?username=FernandoRoldan93&show_icons=true&hide_border=true" />
+  <img width="50%" align="right" src="https://github-readme-stats.vercel.app/api?username=sunMozi&show_icons=true&hide_border=true&theme=default" />
 
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/java/java-ar21.svg"></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/python/python-ar21.svg"></code>
-<code><img width="8%" src="https://www.vectorlogo.zone/logos/r-project/r-project-icon.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/java/java-ar21.svg" alt="Java" /></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/springio/springio-ar21.svg" alt="Spring" /></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg" alt="MySQL" /></code>
 <br />
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-ar21.svg"></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg"></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/docker/docker-ar21.svg" alt="Docker" /></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/redis/redis-ar21.svg" alt="Redis" /></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/nginx/nginx-ar21.svg" alt="Nginx" /></code>
 <br />
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg"></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg"></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/vuejs/vuejs-ar21.svg" alt="Vue.js" /></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg" alt="TypeScript" /></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/github/github-ar21.svg" alt="GitHub" /></code>
 </p>
 
-<sub>Credits to: <br/>[IreneHerrerart](https://www.artstation.com/ireneherrera) for the wonderfull [picture](https://github.com/FernandoRoldan93/FernandoRoldan93/blob/master/cover_image.jpg)</sub>
+---
+
+> 🧭 Always striving for **clean architecture**, **scalable design**, and **developer excellence**  
+> 📬 Feel free to connect or collaborate on any **open-source Java/Vue projects**!
+
+<sub>© mozi · Profile cover image can be customized or replaced with your preferred artwork.</sub>

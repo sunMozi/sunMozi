@@ -3,32 +3,32 @@
 ### This is Mozi!
 
 [![Github](https://img.shields.io/badge/-GitHub-000?style=flat&logo=Github&logoColor=white)](https://github.com/sunMozi)
-[![Email](https://img.shields.io/badge/-Email-c14438?style=flat&logo=Gmail&logoColor=white)](yao2138844072@gmail.com)
+[![Email](https://img.shields.io/badge/-Email-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:yao2138844072@gmail.com)
 [![QQ](https://img.shields.io/badge/QQ-2138844072-12B7F5?style=flat&logo=tencentqq&logoColor=white)](https://qm.qq.com/cgi-bin/qm/qr?k=2138844072)
 
-Welcome to my GitHub profile! I’m **Mozi**, an enterprise-level **Java backend engineer** with a strong commitment to **modular design**, **clean code principles**, and **system scalability**.
+Welcome to my GitHub profile! I’m **Mozi**, a **Java backend engineer** passionate about **modular design**, **clean code principles**, and **system scalability**.
 
 <img align="right" alt="cover" src="./assets/cover.png" width="50%" height="auto" />
 
 ---
 
-#### 🌱 Current Focus
+### 🌱 Current Focus
 
-- ⚙️ Designing scalable backends using **Spring Boot**, **MyBatis**, **Spring Security**
-- 🧩 Modularizing configuration with multi-layered **YAML profiles**
+- ⚙️ Building scalable backends with **Spring Boot**, **MyBatis**, **Spring Security**
+- 🧩 Modularizing configurations using **YAML profiles**
 - 💡 Developing frontends with **Vue 3 + JSX + TailwindCSS**
-- 📈 Deep diving into **distributed system design**, **DevOps**, and **performance tuning**
+- 📈 Exploring **distributed systems**, **DevOps**, and **performance tuning**
 
 ---
 
-#### 💡 Self-Challenges
+### 💡 Self-Challenges
 
-- 🕓 每日保持 ≥ 4 小时编码强度，精进技术栈
-- 🧠 深入掌握 Linux 运维、数据库优化与中间件应用
+- 🕓 Coding ≥ 4 hours daily to refine technical skills
+- 🧠 Mastering **Linux operations**, **database optimization**, and **middleware applications**
 
 ---
 
-#### 💻 My Tech Stack
+### 💻 My Tech Stack
 
 <p>
   <img width="50%" align="right" src="https://github-readme-stats.vercel.app/api?username=sunMozi&show_icons=true&hide_border=true&theme=default" />
@@ -62,7 +62,31 @@ Welcome to my GitHub profile! I’m **Mozi**, an enterprise-level **Java backend
 
 ---
 
-> 🧭 Pursuing **clean architecture**, **modular system design**, and **developer productivity**  
+### 📊 GitHub Stats & Contributions
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=sunMozi&show_icons=true&hide_border=true&theme=radical" alt="GitHub Stats" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sunMozi&theme=radical&hide_border=true" alt="GitHub Streak" />
+  <img src="https://github-readme-activity-graph.cyclic.app/graph?username=sunMozi&theme=radical" alt="GitHub Activity Graph" />
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sunMozi&theme=radical" alt="Profile Details" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=sunMozi&theme=radical" alt="Top Languages" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=sunMozi&theme=radical" alt="Most Used Languages" />
+</p>
+
+---
+
+### 🌟 Visitors Count
+
+<p align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=sunMozi.sunMozi" alt="Visitors Count" />
+</p>
+
+---
+
+> 🧭 Striving for **clean architecture**, **modular system design**, and **developer productivity**  
 > 🤝 Let’s connect or collaborate on open-source **Java / Vue** enterprise projects!
 
 <sub>© Mozi · Cover image can be customized or replaced with your preferred design.</sub>

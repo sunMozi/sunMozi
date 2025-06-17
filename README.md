@@ -43,14 +43,6 @@ Welcome to my GitHub profile! I’m **Mozi**, a **Java backend engineer** passio
 
 <br /><br />
 
-<strong>🤖 AI & Dev Tools:</strong><br />
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/python/python-ar21.svg" alt="Python" /></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/openai/openai-ar21.svg" alt="OpenAI" /></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg" alt="Git" /></code>
-<code><img width="10%" src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-ar21.svg" alt="VSCode" /></code>
-
-<br /><br />
-
 <strong>🎨 Frontend (Vue / JSX):</strong><br />
 <code><img width="10%" src="https://www.vectorlogo.zone/logos/vuejs/vuejs-ar21.svg" alt="Vue.js" /></code>
 <code><img width="10%" src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg" alt="TypeScript" /></code>

@@ -1,41 +1,41 @@
-<h1 align="center">👋 print("Olá, Mundo!") </h1> 
+### Hi there 👋 
+### This is Fernando Roldán!
 
-<a href="https://www.linkedin.com/in/maria-eduarda-de-azevedo-silva-a9a134191/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"><a href="https://open.spotify.com/user/6fgvmx4gtnl612cg0jjtyugps" target="_blank"><img src="https://img.shields.io/badge/Spotify-%231ED760.svg?&style=flat-square&logo=spotify&logoColor=white" alt="Spotify"></a><a href="https://twitter.com/ddt_azevedo" target="_blank"><img src="https://img.shields.io/badge/Twitter-%230077B5.svg?&style=flat-square&logo=twitter&logoColor=white" alt="Twitter"></a>
+[![Github](https://img.shields.io/badge/-Github-000?style=flat&logo=Github&logoColor=white)](https://github.com/FernandoRoldan93)
+[![Linkedin](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/froldanzafra/)
+[![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:Fernando.Roldan.Zafra@gmail.com)
+
+Welcome to my Github page! I am Fernando and I am currently finishing my Computer Engineering Master degree at the university of Granada!  
+
+<img align="right" alt="img" src="https://github.com/FernandoRoldan93/FernandoRoldan93/blob/master/cover_image.jpg" width="50%" height="auto" />
 
 
+#### 🌱 Things I am currently working on: 
+- Finish my Computer Engineering Master Degree  
+- Taking online courses about Data Science and Machine Learning 
+- Business practices on [bi4 Group Spain](https://github.com/bi4group) 🚀 *coming soon*
+
+#### :muscle: Things I am challenging myself with:
+- Waking up earlier to make good use of the day
+- Coding at least 4 hours a day
+- Exercising 3 days a week
+- Improving my CV with some education apart from university
+
+#### :computer: Programming languages and tools: 
 <p>
-    Me chamo <strong>Maria Eduarda de Azevedo</strong> e atualmente sou acadêmica do curso de Ciências da Computação na Universidade Federal de Campina Grande (UFCG).
+	<img width="50%" align="right" src="https://github-readme-stats.vercel.app/api?username=FernandoRoldan93&show_icons=true&hide_border=true" />
+
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/java/java-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/python/python-ar21.svg"></code>
+<code><img width="8%" src="https://www.vectorlogo.zone/logos/r-project/r-project-icon.svg"></code>
+<br />
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg"></code>
+<br />
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg"></code>
+<code><img width="10%" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg"></code>
 </p>
-<h3>ℹ️ Informações gerais 👩‍💻 🏳️‍🌈</h3>
-<strong>Meus pronomes</strong>: Ela/dela 👩
-<strong>Pode me chamar de</strong>: Duda 🙂
-<strong>De onde sou</strong>: Campina Grande - Paraíba - Brasil 🇧🇷
 
-<h3>💻 Sobre tecnologias e afins... 🐍 🌐 👩‍💻</h3>
-<h6>O que eu estou sempre aprendendo...</h6>
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/1822/1822899.svg"/> <strong> Python </strong> (💙💙💙💙💙💙💙💙💙💙💙💙💙💙)
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/919/919828.svg"/> <strong> JavaScript </strong> 
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/919/919832.svg"/> <strong> TypeScript </strong> 
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/226/226777.svg"/> <strong> Java </strong> 
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/2807/2807253.svg"/> <strong> C </strong> 
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/888/888859.svg"/> <strong> HTML5 </strong> 
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/888/888847.svg"/> <strong> CSS3 </strong> 
-
-<img height="30" src="https://www.flaticon.com/svg/static/icons/svg/919/919851.svg"/> <strong> React</strong> 
-
-<img height="30" src="https://seeklogo.com/images/G/gatsby-logo-1A245AD37F-seeklogo.com.png"/> <strong> Gatsby</strong> 
-
-<h3>🧐 Uma olhadinha no meu GitHub...</h3>
-![Duda's GitHub stats](https://github-readme-stats.vercel.app/api?username=MariaEduardaDeAzevedo&show_icons=true&theme=radical)
-
-- Se você gosta de Python tanto quanto eu, tenho uns repositórios com projetinhos muito legais que tratam de processamento de imagem, visão computacional, escrita em arquivos...
-- Um dos meus favoritos é um corretor ortográfico que fiz durante a quarentena como projeto final de um curso de Linguagem C!
-- Sempre estou colocando alguma coisa (aleatória ou não) por aqui.
-
-⭐️ From [MariaEduardaDeAzevedo](https://github.com/MariaEduardaDeAzevedo)
+<sub>Credits to: <br/>[IreneHerrerart](https://www.artstation.com/ireneherrera) for the wonderfull [picture](https://github.com/FernandoRoldan93/FernandoRoldan93/blob/master/cover_image.jpg)</sub>

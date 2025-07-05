@@ -72,6 +72,7 @@
   💬 微信 / QQ：请私聊索取 |
   📌 <a href="https://space.bilibili.com/381499834">Bilibili</a> |
   📌 <a href="https://github.com/sunMozi">GitHub</a>
+  📌 <a href="https://github.com/sunMozi">GitHub</a>
 </p>
 
 ---

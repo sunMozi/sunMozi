@@ -15,11 +15,13 @@
     </a>
 </p>
 
+![](https://raw.githubusercontent.com/sunMozi/sunMozi/main/dist/github-contribution-grid-snake.svg)
+
 ## 📈 Statistics
 
 <div align="center">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=zyan-git&theme=dark" />
-    <img src="https://github-profile-trophy.vercel.app/?username=zyan-git&row=1" />
+    <img  src="https://github-readme-streak-stats.herokuapp.com/?user=sunMozi" />
+    <img  src="https://github-profile-trophy.vercel.app/?username=sunMozi&row=1" />
 </div>
 
 ## 🛠️ Languages
@@ -47,10 +49,10 @@
 ## 🔗 Contact
 
 - 🌐 [个人网站](https://mozi-ai.xyz/)
-- ✉️ 邮箱：your-email@example.com
+- ✉️ 邮箱：2138844072@qq.com
 - 💬 微信 / QQ：请私聊索取
 - 📌 [Bilibili](https://space.bilibili.com/381499834)
-- 📌 [GitHub](https://github.com/zyan-git)
+- 📌 [GitHub](https://github.com/sunMozi)
 
 ---
 

@@ -2,7 +2,7 @@ name: Daily Git Commit Report
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 UTC 0 点，对应北京时间 08:00
+    - cron: '0 0 * * *' 
   workflow_dispatch:
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout (dummy step)
+      - name: Checkout (dummy)
         uses: actions/checkout@v4
 
       - name: Install jq
@@ -20,7 +20,7 @@ jobs:
         id: date
         run: echo "date=$(TZ=Asia/Shanghai date -d yesterday '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
-      - name: Collect commits
+      - name: Collect your commits only
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
@@ -29,33 +29,31 @@ jobs:
           echo "## 🗓️ ${DATE} Git 提交日报" > report.md
           echo "" >> report.md
 
-          # 获取所有仓库
+          found=false
+
+          # 获取你账号下的所有仓库（支持私有）
           repos=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/user/repos?per_page=100 | jq -r '.[].full_name')
 
           for repo in $repos; do
-            echo "📁 仓库：$repo" >> report.md
-            # 获取所有分支
             branches=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/repos/$repo/branches | jq -r '.[].name')
-
-            found_commit=false
 
             for branch in $branches; do
               commits=$(curl -s -H "Authorization: token $GH_TOKEN" \
-                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00Z&until=${DATE}T23:59:59Z" | jq -r '.[] | select(.commit.author.email == env.AUTHOR_EMAIL) | "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))"')
+                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00Z&until=${DATE}T23:59:59Z" | \
+                jq -r --arg email "$AUTHOR_EMAIL" '.[] | select(.commit.author.email == $email) | "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))"')
 
               if [ -n "$commits" ]; then
-                found_commit=true
-                echo "🔀 分支：$branch" >> report.md
+                found=true
+                echo "📁 仓库：$repo（分支：$branch）" >> report.md
                 echo "$commits" >> report.md
                 echo "" >> report.md
               fi
             done
-
-            if [ "$found_commit" = false ]; then
-              echo "- （无本人提交记录）" >> report.md
-              echo "" >> report.md
-            fi
           done
+
+          if [ "$found" = false ]; then
+            echo "- （无本人提交记录）" >> report.md
+          fi
 
           cat report.md
 

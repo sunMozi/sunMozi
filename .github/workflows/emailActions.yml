@@ -33,8 +33,7 @@ jobs:
           server_port: ${{ secrets.MAIL_SMTP_PORT }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "每日 Git 提交日报（${{ steps.date.outputs.date_str }}）"
-          to: ${{ secrets.MAIL_TO }}
+          to: ${{ secrets.MAIL_TO }}               # ✅ 必须有
           from: GitHub Action <${{ secrets.MAIL_USERNAME }}>
-          content_type: text
-          body: file://git-log.txt
+          subject: "每日 Git 提交日报（${{ steps.date.outputs.date_str }}）"
+          body: file://git-log.txt                  # ✅ 纯文本正文

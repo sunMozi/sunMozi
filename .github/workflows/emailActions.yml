@@ -1,0 +1,40 @@
+name: Daily Git Email Report
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 0点 -> 北京时间 8点
+  workflow_dispatch:
+
+jobs:
+  send_git_log_email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set yesterday date
+        id: date
+        run: echo "date_str=$(TZ=Asia/Shanghai date -d yesterday '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
+      - name: Generate Git Log
+        run: |
+          DATE=${{ steps.date.outputs.date_str }}
+          echo "🗓️ 昨日 Git 提交记录（$DATE）" > git-log.txt
+          git log --since="yesterday 00:00" --until="yesterday 23:59" --pretty=format:"- %s by %an" >> git-log.txt
+          cat git-log.txt
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SMTP_HOST }}
+          server_port: ${{ secrets.MAIL_SMTP_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "每日 Git 提交日报（${{ steps.date.outputs.date_str }}）"
+          to: ${{ secrets.MAIL_TO }}
+          from: GitHub Action <${{ secrets.MAIL_USERNAME }}>
+          content_type: text
+          body: file://git-log.txt

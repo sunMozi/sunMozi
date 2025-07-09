@@ -16,40 +16,56 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Set yesterday date
+      - name: Set yesterday date (Asia/Shanghai timezone)
         id: date
         run: echo "date=$(TZ=Asia/Shanghai date -d yesterday '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
+      - name: Debug Info
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
+          AUTHOR_EMAIL: ${{ secrets.AUTHOR_EMAIL }}
+        run: |
+          echo "🔧 执行日期: ${{ steps.date.outputs.date }}"
+          echo "🔧 GitHub 用户名: $MY_GITHUB_USERNAME"
+          echo "🔧 绑定邮箱: $AUTHOR_EMAIL"
+          echo "🔧 GH_TOKEN 长度: ${#GH_TOKEN}"
 
       - name: Collect commits and generate report
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
+          AUTHOR_EMAIL: ${{ secrets.AUTHOR_EMAIL }}
         run: |
           DATE=${{ steps.date.outputs.date }}
+
           echo "## 🗓️ ${DATE} Git 提交日报" > report.md
           echo "" >> report.md
 
           found=false
           declare -A repo_commit_count
 
-          repos=$(curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/user/repos?affiliation=owner,collaborator,organization_member&per_page=100" | jq -r '.[].full_name')
+          # 获取所有拥有权限的仓库，包含个人、协作者、组织成员
+          repos=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/user/repos?affiliation=owner,collaborator,organization_member&per_page=100" | jq -r '.[].full_name')
 
           for repo in $repos; do
             branches=$(curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/repos/$repo/branches" | jq -r '.[].name')
 
             for branch in $branches; do
-              commits=$(curl -s -H "Authorization: token $GH_TOKEN" \
-                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00+08:00&until=${DATE}T23:59:59+08:00" | \
-                jq -r --arg login "$MY_GITHUB_USERNAME" '
-                  .[] | select(.author.login == $login) |
-                  "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))" +
-                  (if .verification.verified then " ✅[GPG签名]" else "" end)
-                ')
+              commits_json=$(curl -s -H "Authorization: token $GH_TOKEN" \
+                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00+08:00&until=${DATE}T23:59:59+08:00")
+
+              commits=$(echo "$commits_json" | jq -r --arg login "$MY_GITHUB_USERNAME" --arg email "$AUTHOR_EMAIL" '
+                .[] | select(.author.login == $login or .commit.author.email == $email) |
+                "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))" +
+                (if .verification.verified then " ✅[GPG签名]" else "" end)
+              ')
 
               if [ -n "$commits" ]; then
                 found=true
 
-                # 累计仓库提交次数
+                # 统计仓库提交数
                 count=$(echo "$commits" | wc -l)
                 repo_commit_count["$repo"]=$(( ${repo_commit_count["$repo"]:-0} + count ))
 

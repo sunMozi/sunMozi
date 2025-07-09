@@ -2,7 +2,7 @@ name: Daily Git Commit Report
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 UTC 0 点（北京时间 08:00）
+    - cron: '0 0 * * *' # 每天 UTC 0 点（北京时间 08:00）
   workflow_dispatch:
 
 jobs:
@@ -20,16 +20,7 @@ jobs:
         id: date
         run: echo "date=$(TZ=Asia/Shanghai date -d yesterday '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
-      - name: Debug Info
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
-        run: |
-          echo "🔧 执行日期: ${{ steps.date.outputs.date }}"
-          echo "🔧 MY_GITHUB_USERNAME: $MY_GITHUB_USERNAME"
-          echo "🔧 GH_TOKEN 长度: ${#GH_TOKEN}"
-
-      - name: Collect GPG-signed commits by GitHub username
+      - name: Collect commits and generate report
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
@@ -39,15 +30,16 @@ jobs:
           echo "" >> report.md
 
           found=false
+          declare -A repo_commit_count
 
-          repos=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/user/repos?per_page=100 | jq -r '.[].full_name')
+          repos=$(curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/user/repos?affiliation=owner,collaborator,organization_member&per_page=100" | jq -r '.[].full_name')
 
           for repo in $repos; do
-            branches=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/repos/$repo/branches | jq -r '.[].name')
+            branches=$(curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/repos/$repo/branches" | jq -r '.[].name')
 
             for branch in $branches; do
               commits=$(curl -s -H "Authorization: token $GH_TOKEN" \
-                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00Z&until=${DATE}T23:59:59Z" | \
+                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00+08:00&until=${DATE}T23:59:59+08:00" | \
                 jq -r --arg login "$MY_GITHUB_USERNAME" '
                   .[] | select(.author.login == $login) |
                   "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))" +
@@ -56,6 +48,11 @@ jobs:
 
               if [ -n "$commits" ]; then
                 found=true
+
+                # 累计仓库提交次数
+                count=$(echo "$commits" | wc -l)
+                repo_commit_count["$repo"]=$(( ${repo_commit_count["$repo"]:-0} + count ))
+
                 echo "📁 仓库：$repo（分支：$branch）" >> report.md
                 echo "$commits" >> report.md
                 echo "" >> report.md
@@ -63,11 +60,18 @@ jobs:
             done
           done
 
-          if [ "$found" = false ]; then
-            echo "- （无本人提交记录）" >> report.md
+          if [ "$found" = true ]; then
+            echo "📊 提交统计（按仓库）：" > summary.md
+            for repo in "${!repo_commit_count[@]}"; do
+              echo "- $repo: ${repo_commit_count[$repo]} 次提交" >> summary.md
+            done
+            echo "" >> summary.md
+            cat summary.md report.md > final-report.md
+          else
+            echo "- （无本人提交记录）" > final-report.md
           fi
 
-          cat report.md
+          cat final-report.md
 
       - name: Send Email
         uses: dawidd6/action-send-mail@v3
@@ -78,5 +82,5 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           to: ${{ secrets.MAIL_TO }}
           from: GitHub Bot <${{ secrets.MAIL_USERNAME }}>
-          subject: "每日 Git 提交日报 - ${{ steps.date.outputs.date }}"
-          body: file://report.md
+          subject: '每日 Git 提交日报 - ${{ steps.date.outputs.date }}'
+          body: file://final-report.md

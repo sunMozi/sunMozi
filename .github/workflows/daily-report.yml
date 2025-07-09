@@ -24,7 +24,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
-          AUTHOR_EMAIL: ${{ secrets.AUTHOR_EMAIL }}
+          AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
         run: |
           echo "🔧 执行日期: ${{ steps.date.outputs.date }}"
           echo "🔧 GitHub 用户名: $MY_GITHUB_USERNAME"
@@ -35,7 +35,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
-          AUTHOR_EMAIL: ${{ secrets.AUTHOR_EMAIL }}
+          AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
         run: |
           DATE=${{ steps.date.outputs.date }}
 

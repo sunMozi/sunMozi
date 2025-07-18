@@ -1,103 +1,103 @@
-name: Daily Git Commit Report
+# name: Daily Git Commit Report
 
-on:
-  schedule:
-    - cron: '0 0 * * *' # 每天 UTC 0 点（北京时间 08:00 执行）
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: '0 0 * * *' # 每天 UTC 0 点（北京时间 08:00 执行）
+#   workflow_dispatch:
 
-jobs:
-  daily-git-report:
-    runs-on: ubuntu-latest
+# jobs:
+#   daily-git-report:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout (dummy)
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout (dummy)
+#         uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+#       - name: Install jq
+#         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Set yesterday date (Asia/Shanghai timezone)
-        id: date
-        run: echo "date=$(TZ=Asia/Shanghai date -d yesterday '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+#       - name: Set yesterday date (Asia/Shanghai timezone)
+#         id: date
+#         run: echo "date=$(TZ=Asia/Shanghai date -d yesterday '+%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
-      - name: Debug Info
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
-          AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
-        run: |
-          echo "🔧 执行日期: ${{ steps.date.outputs.date }}"
-          echo "🔧 GitHub 用户名: $MY_GITHUB_USERNAME"
-          echo "🔧 提交邮箱: $AUTHOR_EMAIL"
-          echo "🔧 GH_TOKEN 长度: ${#GH_TOKEN}"
+#       - name: Debug Info
+#         env:
+#           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+#           MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
+#           AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+#         run: |
+#           echo "🔧 执行日期: ${{ steps.date.outputs.date }}"
+#           echo "🔧 GitHub 用户名: $MY_GITHUB_USERNAME"
+#           echo "🔧 提交邮箱: $AUTHOR_EMAIL"
+#           echo "🔧 GH_TOKEN 长度: ${#GH_TOKEN}"
 
-      - name: Collect commits and generate report
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
-          AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
-        run: |
-          DATE=${{ steps.date.outputs.date }}
-          echo "## 🗓️ ${DATE} Git 提交日报" > report.md
-          echo "" >> report.md
+#       - name: Collect commits and generate report
+#         env:
+#           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+#           MY_GITHUB_USERNAME: ${{ secrets.MY_GITHUB_USERNAME }}
+#           AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+#         run: |
+#           DATE=${{ steps.date.outputs.date }}
+#           echo "## 🗓️ ${DATE} Git 提交日报" > report.md
+#           echo "" >> report.md
 
-          found=false
-          declare -A repo_commit_count
+#           found=false
+#           declare -A repo_commit_count
 
-          # 获取用户参与的所有仓库（包含私有、协作、组织）
-          repos=$(curl -s -H "Authorization: token $GH_TOKEN" \
-            "https://api.github.com/user/repos?affiliation=owner,collaborator,organization_member&per_page=100" \
-            | jq -r '.[].full_name')
+#           # 获取用户参与的所有仓库（包含私有、协作、组织）
+#           repos=$(curl -s -H "Authorization: token $GH_TOKEN" \
+#             "https://api.github.com/user/repos?affiliation=owner,collaborator,organization_member&per_page=100" \
+#             | jq -r '.[].full_name')
 
-          for repo in $repos; do
-            branches=$(curl -s -H "Authorization: token $GH_TOKEN" \
-              "https://api.github.com/repos/$repo/branches" \
-              | jq -r '.[].name')
+#           for repo in $repos; do
+#             branches=$(curl -s -H "Authorization: token $GH_TOKEN" \
+#               "https://api.github.com/repos/$repo/branches" \
+#               | jq -r '.[].name')
 
-            for branch in $branches; do
-              commits_json=$(curl -s -H "Authorization: token $GH_TOKEN" \
-                "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00+08:00&until=${DATE}T23:59:59+08:00")
+#             for branch in $branches; do
+#               commits_json=$(curl -s -H "Authorization: token $GH_TOKEN" \
+#                 "https://api.github.com/repos/$repo/commits?sha=$branch&since=${DATE}T00:00:00+08:00&until=${DATE}T23:59:59+08:00")
 
-              # 支持 login 和邮箱双匹配
-              commits=$(echo "$commits_json" | jq -r --arg login "$MY_GITHUB_USERNAME" --arg email "$AUTHOR_EMAIL" '
-                .[] | select(.author.login == $login or .commit.author.email == $email) |
-                "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))" +
-                (if .verification.verified then " ✅[GPG签名]" else "" end)
-              ')
+#               # 支持 login 和邮箱双匹配
+#               commits=$(echo "$commits_json" | jq -r --arg login "$MY_GITHUB_USERNAME" --arg email "$AUTHOR_EMAIL" '
+#                 .[] | select(.author.login == $login or .commit.author.email == $email) |
+#                 "- \(.commit.message) by \(.commit.author.name) (\(.sha[0:7]))" +
+#                 (if .verification.verified then " ✅[GPG签名]" else "" end)
+#               ')
 
-              if [ -n "$commits" ]; then
-                found=true
-                count=$(echo "$commits" | wc -l)
-                repo_commit_count["$repo"]=$(( ${repo_commit_count["$repo"]:-0} + count ))
+#               if [ -n "$commits" ]; then
+#                 found=true
+#                 count=$(echo "$commits" | wc -l)
+#                 repo_commit_count["$repo"]=$(( ${repo_commit_count["$repo"]:-0} + count ))
 
-                echo "📁 仓库：$repo（分支：$branch）" >> report.md
-                echo "$commits" >> report.md
-                echo "" >> report.md
-              fi
-            done
-          done
+#                 echo "📁 仓库：$repo（分支：$branch）" >> report.md
+#                 echo "$commits" >> report.md
+#                 echo "" >> report.md
+#               fi
+#             done
+#           done
 
-          if [ "$found" = true ]; then
-            echo "📊 提交统计（按仓库）：" > summary.md
-            for repo in "${!repo_commit_count[@]}"; do
-              echo "- $repo: ${repo_commit_count[$repo]} 次提交" >> summary.md
-            done
-            echo "" >> summary.md
-            cat summary.md report.md > final-report.md
-          else
-            echo "- （无本人提交记录）" > final-report.md
-          fi
+#           if [ "$found" = true ]; then
+#             echo "📊 提交统计（按仓库）：" > summary.md
+#             for repo in "${!repo_commit_count[@]}"; do
+#               echo "- $repo: ${repo_commit_count[$repo]} 次提交" >> summary.md
+#             done
+#             echo "" >> summary.md
+#             cat summary.md report.md > final-report.md
+#           else
+#             echo "- （无本人提交记录）" > final-report.md
+#           fi
 
-          cat final-report.md
+#           cat final-report.md
 
-      - name: Send Email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ${{ secrets.MAIL_SMTP_HOST }}
-          server_port: ${{ secrets.MAIL_SMTP_PORT }}
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          to: ${{ secrets.MAIL_TO }}
-          from: GitHub Bot <${{ secrets.MAIL_USERNAME }}>
-          subject: '每日 Git 提交日报 - ${{ steps.date.outputs.date }}'
-          body: file://final-report.md
+#       - name: Send Email
+#         uses: dawidd6/action-send-mail@v3
+#         with:
+#           server_address: ${{ secrets.MAIL_SMTP_HOST }}
+#           server_port: ${{ secrets.MAIL_SMTP_PORT }}
+#           username: ${{ secrets.MAIL_USERNAME }}
+#           password: ${{ secrets.MAIL_PASSWORD }}
+#           to: ${{ secrets.MAIL_TO }}
+#           from: GitHub Bot <${{ secrets.MAIL_USERNAME }}>
+#           subject: '每日 Git 提交日报 - ${{ steps.date.outputs.date }}'
+#           body: file://final-report.md
